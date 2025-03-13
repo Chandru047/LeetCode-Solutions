@@ -4,7 +4,7 @@ class Solution {
         Set<Integer> seen = new HashSet<>();
         do 
         {
-            if (seen.contains(n)) return false; // Cycle detected
+            if (seen.contains(n)) return false;
             seen.add(n);
             sum = 0; 
             while (n > 0) 

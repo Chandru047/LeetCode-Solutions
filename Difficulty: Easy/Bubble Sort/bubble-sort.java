@@ -9,28 +9,21 @@ import java.util.*;
 
 // User function Template for Java
 
-class Solution
-{
+class Solution {
+    // Function to sort the array using bubble sort algorithm.
     public static void bubbleSort(int arr[]) 
     {
-        int n = arr.length;
-        for(int i = n-1 ; i >= 0 ; i--)
+        for(int i = 0 ; i < arr.length ; i++)
         {
-            boolean swapped = false ;
-            for(int j = 0 ; j <= i - 1 ; j ++)
+            for(int j = 0 ; j < arr.length -i - 1 ; j++)
             {
                 if(arr[j] > arr[j + 1])
                 {
                     int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp ;
-                    swapped = true ;
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp ;
+                    
                 }
-            }
-            
-            if(!swapped)
-            {
-                break ;
             }
         }
     }

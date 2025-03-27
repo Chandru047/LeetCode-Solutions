@@ -8,26 +8,7 @@ class Solution {
         {
             public int compare(int[] a, int[] b) 
             {
-                if (a[0] > b[0]) 
-                {
-                    return 1;
-                } 
-                else if (a[0] == b[0]) 
-                {
-                    if (a[1] > b[1]) 
-                    {
-                        return 1;
-                    } 
-                    else if(a[1] == b[1]) return 0 ;
-                    else 
-                    {
-                        return -1;
-                    }
-                } 
-                else 
-                {
-                    return -1;
-                }
+                return a[0]-b[0];
             }
         });
 

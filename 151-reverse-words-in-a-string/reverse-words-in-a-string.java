@@ -1,17 +1,13 @@
-class Solution {
-    public String reverseWords(String s) 
-    {
-        String[] arr = s.split(" ");
-        int n = arr.length ;
-        String res ="";
-        for(int i = n - 1 ; i>= 0; i--)
-        {
-            if(arr[i].equals("")) continue;
+public class Solution {
+    public String reverseWords(String s) {
+        String[] words = s.trim().split("\\s+");
+        StringBuilder reversed = new StringBuilder();
 
-            res+= arr[i].trim() + " ";
-
+        for (int i = words.length - 1; i >= 0; i--) {
+            reversed.append(words[i]);
+            if (i != 0) reversed.append(" ");
         }
 
-        return res.trim() ;
+        return reversed.toString();
     }
 }

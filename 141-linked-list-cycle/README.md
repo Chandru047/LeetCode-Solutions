@@ -10,7 +10,7 @@
 <pre>
 <strong>Input:</strong> head = [3,2,0,-4], pos = 1
 <strong>Output:</strong> true
-<strong>Explanation:</strong> There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).
+<strong>Explanation:</strong> There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed)
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>

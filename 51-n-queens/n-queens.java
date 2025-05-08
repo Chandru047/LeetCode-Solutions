@@ -45,9 +45,4 @@ public class Solution {
         return boardList;
     }
 
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        List<List<String>> result = sol.solveNQueens(4);
-        System.out.println(result);
-    }
 }

@@ -1,58 +1,34 @@
-class Solution 
-{
-    public static void setZeroes(int[][] matrix) 
+class Solution {
+    public void setZeroes(int[][] matrix) 
     {
-        int m = matrix.length, n = matrix[0].length;
-        boolean firstRowZero = false, firstColZero = false;
-
-        for (int i = 0; i < m; i++) 
+        boolean found  ;
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i = 0 ; i < matrix.length ;i++)
         {
-            if (matrix[i][0] == 0) 
+            found  = false;
+            for(int j = 0 ; j < matrix[i].length ;j++)
             {
-                firstColZero = true;
-                break;
-            }
-        }
-        for (int j = 0; j < n; j++) 
-        {
-            if (matrix[0][j] == 0) 
-            {
-                firstRowZero = true;
-                break;
-            }
-        }
-        for (int i = 1; i < m; i++) 
-        {
-            for (int j = 1; j < n; j++) 
-            {
-                if (matrix[i][j] == 0) 
+                if(matrix[i][j] == 0) 
                 {
-                    matrix[i][0] = 0;
-                    matrix[0][j] = 0;
+                    found = true ;
+                    arr.add(j);
                 }
             }
-        }
-        for (int i = 1; i < m; i++) 
-        {
-            for (int j = 1; j < n; j++) 
+            if(found)
             {
-                if (matrix[i][0] == 0 || matrix[0][j] == 0) 
-                {
-                    matrix[i][j] = 0;
-                }
+                 Arrays.fill(matrix[i],0);
             }
-        }
-
-        if (firstRowZero) 
+           
+        } 
+        for(int i = 0 ; i < matrix.length;i++)
         {
-            Arrays.fill(matrix[0], 0);
-        }
-        if (firstColZero) 
-        {
-            for (int i = 0; i < m; i++) 
+           for(int j = 0 ; j < matrix[i].length ;j++)
+           {
+            if(arr.contains(j))
             {
-                matrix[i][0] = 0;
+                matrix[i][j] = 0 ;
             }
+           } 
+        }  
     }
-}
 }

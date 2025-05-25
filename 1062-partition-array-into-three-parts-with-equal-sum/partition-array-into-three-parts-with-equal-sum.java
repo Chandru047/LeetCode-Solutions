@@ -18,11 +18,9 @@ class Solution {
                 count++ ;
                 tempSum = 0;
             }
-            if (count == 2 && i < arr.length - 1) {
-            return true;
-            }
+            
         }
 
-        return count == 3 ;
+        return count >= 3 ;
     }
 }

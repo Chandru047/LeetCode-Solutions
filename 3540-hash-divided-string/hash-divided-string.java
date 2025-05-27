@@ -3,18 +3,16 @@ class Solution {
         int sum = 0 ;
         int count = 0 ; 
         String result ="";
-        String x = "";
-        for(char temp : s.toCharArray())
+        for(int i = 0 ; i < s.length() ; i++)
         {
-            x+=temp;
+            char temp = s.charAt(i);
             sum+=(temp -'a');
             count++ ;
             if(count == k)
             {
-                char i  = 'a';
-                i+=sum%26;
-                result+=(i);
-                x="";
+                char n  = 'a';
+                n+=sum%26;
+                result+=(n);
                 count = 0 ;
                 sum = 0 ;
             }

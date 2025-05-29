@@ -28,7 +28,5 @@ class Solution {
             lst.add(st.toString());
         }
         return lst;
-        //tc: O(n)
-        //sc: O(n)
     }
 }

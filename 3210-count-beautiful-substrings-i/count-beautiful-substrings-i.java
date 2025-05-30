@@ -17,12 +17,10 @@ class Solution {
                     consonants++;
                 }
                 if(vowels == consonants && ((vowels * consonants) % k) == 0)
-            {
+                {
                 count += 1;
-            }
-            }
-
-            
+                }
+            } 
         }   
         return count ;
     }

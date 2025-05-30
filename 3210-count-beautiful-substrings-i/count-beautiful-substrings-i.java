@@ -2,13 +2,15 @@ class Solution {
     public int beautifulSubstrings(String s, int k) 
     {
         int count = 0 ; 
-        for(int i = 0 ; i < s.length() ; i++)
+        int size = s.length() ;
+        for(int i = 0 ; i < size ; i++)
         {
             int vowels = 0 ; 
             int consonants = 0 ;
-            for(int j = i ; j < s.length() ; j++)
+            for(int j = i ; j < size ; j++)
             {
-                if(s.charAt(j) == 'a' || s.charAt(j) == 'e' || s.charAt(j) == 'i' || s.charAt(j) == 'o' || s.charAt(j) == 'u' )
+                char x = s.charAt(j) ;
+                if(x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u' )
                 {
                     vowels++ ;
                 }

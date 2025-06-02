@@ -1,50 +1,45 @@
 class Solution {
-    void merge(int[] arr , int low , int mid , int high)
-    {
-        int left = low ; 
-        int right = mid + 1  ;
-        ArrayList<Integer> temp = new ArrayList<>();
+    int partition(int[] nums , int low , int high) {
 
-        while(left <= mid && right <= high)
-        {
-            if(arr[left] <= arr[right])
-            {
-                temp.add(arr[left]);
-                left++ ;
-            }
-            else
-            {
-                temp.add(arr[right]);
-                right++ ;
-            }
-        }
-        while(left <= mid)
-        {
-            temp.add(arr[left]);
-            left++ ;
-        }
-        while(right <= high)
-        {
-            temp.add(arr[right]);
-            right++ ;
-        }
+    int pivotIndex = low + (int)(Math.random() * (high - low + 1));
+    
 
-        for(int i = low ; i <= high ; i++)
-        {
-            arr[i] = temp.get(i - low);
+    int temp = nums[low];
+    nums[low] = nums[pivotIndex];
+    nums[pivotIndex] = temp;
+    
+    int pivot = nums[low];
+    int i = low;
+    int j = high;
+
+    while(i < j) {
+        while(i <= high - 1 && nums[i] <= pivot) i++;
+        while(j >= low + 1 && nums[j] > pivot) j--;
+        if(i < j) {
+            temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
         }
     }
-    void mS(int[] arr , int low , int high)
-    {
-        if(low == high) return  ;
-        int mid = low + (high - low) / 2 ;
-        mS(arr , low , mid);
-        mS(arr , mid+1 , high);
-        merge(arr,low,mid,high);
 
+    temp = nums[low];
+    nums[low] = nums[j];
+    nums[j] = temp;
+
+    return j;
+}
+
+    void qs(int[] nums , int low , int high)
+    {
+        if(low<high)
+        {
+            int pIndex = partition(nums , low , high);
+            qs(nums , low , pIndex - 1);
+            qs(nums , pIndex + 1 , high);
+        }
     }
-    public int[] sortArray(int[] arr) {
-        mS(arr, 0, arr.length - 1);
-        return arr;
+    public int[] sortArray(int[] nums) {
+        qs(nums , 0 , nums.length - 1);
+        return nums ;
     }
 }

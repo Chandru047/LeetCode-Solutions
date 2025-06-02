@@ -1,45 +1,50 @@
 class Solution {
-    int partition(int[] nums , int low , int high) {
+    void merge(int[] nums , int low ,int mid , int high)
+    {
+        ArrayList<Integer> arr = new ArrayList<>();
 
-    int pivotIndex = low + (int)(Math.random() * (high - low + 1));
-    
+        int i = low ;
+        int j = mid + 1 ;
+        while(i <=mid && j<=high)
+        {
+            if(nums[i] < nums[j])
+            {
+                arr.add(nums[i]);
+                i++ ;
+            }
+            else
+            {
+                arr.add(nums[j]);
+                j++ ;
+            }
+        }
+        while(i<=mid)
+        {
+            arr.add(nums[i]);
+            i++ ;
+        }
+        while(j<=high)
+        {
+            arr.add(nums[j]);
+            j++ ;
+        }
 
-    int temp = nums[low];
-    nums[low] = nums[pivotIndex];
-    nums[pivotIndex] = temp;
-    
-    int pivot = nums[low];
-    int i = low;
-    int j = high;
-
-    while(i < j) {
-        while(i <= high - 1 && nums[i] <= pivot) i++;
-        while(j >= low + 1 && nums[j] > pivot) j--;
-        if(i < j) {
-            temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
+        for(int x = low ; x <=high ; x++)
+        {
+            nums[x] = arr.get(x - low);
         }
     }
-
-    temp = nums[low];
-    nums[low] = nums[j];
-    nums[j] = temp;
-
-    return j;
-}
-
     void qs(int[] nums , int low , int high)
     {
-        if(low<high)
-        {
-            int pIndex = partition(nums , low , high);
-            qs(nums , low , pIndex - 1);
-            qs(nums , pIndex + 1 , high);
-        }
+        if(low >= high) return ;
+        int mid = low + (high - low) / 2 ;
+        qs(nums , low , mid);
+        qs(nums , mid + 1 , high);
+        merge(nums , low , mid , high);
     }
-    public int[] sortArray(int[] nums) {
-        qs(nums , 0 , nums.length - 1);
-        return nums ;
+    public int[] sortArray(int[] nums) 
+    {
+        qs(nums , 0 , nums.length - 1);   
+        return nums;
     }
 }
